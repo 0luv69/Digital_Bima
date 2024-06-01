@@ -1,21 +1,295 @@
 
-
-{% block title %}
+{% load static tailwind_tags %}
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% tailwind_css %}
+</head>
+<body>
   
-{% endblock title %}
+<!-- navbar -->
+    <nav class="bg-white border-gray-200 dark:bg-gray-900 px-28">
+        <div class="flex flex-wrap justify-between items-center py-4">
+            <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Bima Management</span>
+            </a>
+            <div class="flex items-center space-x-6 rtl:space-x-reverse">
+                <a href="#">
+                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Log in</button>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- links -->
+    <nav class="px-28">
+        <div class="py-3 mx-auto  border-t border-b px-2">
+            <div class="flex items-center">
+                <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
+                    <li>
+                        <a href="#" class="text-gray-900 dark:text-white hover:underline" aria-current="page">Guide</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-900 dark:text-white hover:underline">Hospitals</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-900 dark:text-white hover:underline">My Details</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-900 dark:text-white hover:underline">More</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 
-{% block style %}
+    <main class="flex gap-12 px-28 py-8">
+        <!-- left  -->
+        <section class="w-3/5">
+            <div class="p-4 bg-blue-100 rounded-lg md:p-8 dark:bg-gray-800">
+                <h2 class="mb-5 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Protect Your Health with Rastriya Beema: Comprehensive Coverage</h2>
+                <p class="mb-3 text-gray-500 dark:text-gray-400">Comprehensive health insurance plans designed to safeguard your well-being. Our policies cover a wide range of medical services, ensuring you and your family have access to quality healthcare when you need it most. Trust us to provide the protection and peace of mind you deserve.</p>
+                <a href="#" class="inline-flex items-center font-medium text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-700">
+                    Learn more
+                    <svg class=" w-2.5 h-2.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="p-4 mt-8 border rounded-lg md:p-8 dark:bg-gray-800">
+                <h2 class="mb-5 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Current Appointment</h2>
+                <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+                    <li class="py-3 sm:py-4">
+                        <div class="flex items-center justify-between">
+                            
+                                <p class=" font-medium text-gray-900 truncate dark:text-white">
+                                    Specialization
+                                </p>
+                            <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
+                                Physician
+                            </div>
+                        </div>
+                    </li>
+                    <li class="py-3 sm:py-4">
+                        <div class="flex items-center justify-between">
+                            
+                                <p class=" font-medium text-gray-900 truncate dark:text-white">
+                                    Tests
+                                </p>
+                            <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
+                                   X-ray, Blood test, urine test
+                            </div>
+                        </div>
+                    </li>
+                    <li class="py-3 sm:py-4">
+                        <div class="flex items-center justify-between">
+                            
+                                <p class=" font-medium text-gray-900 truncate dark:text-white">
+                                    Medicines
+                                </p>
+                            <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
+                                Cetamol, other medicine, more medicine
+                            </div>
+                        </div>
+                    </li>
+                    </ul>
+            </div>
+
+            <!-- recent appointment  -->
+
+            <div class="p-4 mt-8 border rounded-lg md:p-8 dark:bg-gray-800">    
+                <h2 class="mb-5 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Recent Appointment</h2>     
+
+<div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
+    <h2 id="accordion-flush-heading-1">
+      <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-1" aria-expanded="true" aria-controls="accordion-flush-body-1">
+                            
+            <p class=" font-medium text-gray-900 truncate dark:text-white">
+                2023/04/13
+            </p>
+        
+    <div class="flex gap-8 items-center">
+        <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
+            Rs 8350
+        </div>
+        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+        </svg>
+    </div>
+
+    
+      </button>
+    </h2>
+    <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
+      <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+        <div>
+                            
+            <p class=" font-medium text-gray-900 truncate dark:text-white">
+                Tests
+            </p>
+        <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, commodi quis. Et, quam quasi labore facere nobis aspernatur nisi omnis.
+        </div>
+        <div class="mt-4">
+                            
+            <p class=" font-medium text-gray-900 truncate dark:text-white">
+                Medicine
+            </p>
+        <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, commodi quis. Et, quam quasi labore facere nobis aspernatur nisi omnis.
+        </div>
+    </div>
+      </div>
+    </div>
+    </div>
+
+
+  <h2 id="accordion-flush-heading-2">
+      <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-2" aria-expanded="true" aria-controls="accordion-flush-body-2">
+                            
+            <p class=" font-medium text-gray-900 truncate dark:text-white">
+                2023/04/13
+            </p>
+        
+    <div class="flex gap-8 items-center">
+        <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
+            Rs 8350
+        </div>
+        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+        </svg>
+    </div>
+
+    
+      </button>
+    </h2>
+    <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
+      <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+        <div>
+                            
+            <p class=" font-medium text-gray-900 truncate dark:text-white">
+                Tests
+            </p>
+        <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, commodi quis. Et, quam quasi labore facere nobis aspernatur nisi omnis.
+        </div>
+        <div class="mt-4">
+                            
+            <p class=" font-medium text-gray-900 truncate dark:text-white">
+                Medicine
+            </p>
+        <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, commodi quis. Et, quam quasi labore facere nobis aspernatur nisi omnis.
+        </div>
+    </div>
+      </div>
+    </div>
+    </div>
+
+    <h2 id="accordion-flush-heading-3">
+        <button type="button" class="flex items-center justify-between w-full py-5 font-medium rtl:text-right text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 gap-3" data-accordion-target="#accordion-flush-body-3" aria-expanded="true" aria-controls="accordion-flush-body-3">
+                              
+              <p class=" font-medium text-gray-900 truncate dark:text-white">
+                  2023/04/13
+              </p>
+          
+      <div class="flex gap-8 items-center">
+          <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
+              Rs 8350
+          </div>
+          <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
+          </svg>
+      </div>
   
-{% endblock style %}
+      
+        </button>
+      </h2>
+      <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
+        <div class="py-5 border-b border-gray-200 dark:border-gray-700">
+          <div>
+                              
+              <p class=" font-medium text-gray-900 truncate dark:text-white">
+                  Tests
+              </p>
+          <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, commodi quis. Et, quam quasi labore facere nobis aspernatur nisi omnis.
+          </div>
+          <div class="mt-4">
+                              
+              <p class=" font-medium text-gray-900 truncate dark:text-white">
+                  Medicine
+              </p>
+          <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates, commodi quis. Et, quam quasi labore facere nobis aspernatur nisi omnis.
+          </div>
+      </div>
+        </div>
+      </div>
+      </div>
 
-
-{% block content %}
+  </div>
   
-{% endblock content %}
+            </div>
+    
+        </section>
+
+<!-- right -->
+        <aside class="w-2/5 px-8">
+            <article class=" sticky top-8 ">
+            <form class="w-full mx-auto bg-white py-8 px-8 rounded-lg border">
+                <div class="heading-text mb-4">
+                  <h1 class="font-bold text-2xl ">Apponiment form</h1>
+                </div>
+                <label for="countries" class="block mb-2 text-sm font-medium text-black dark:text-white">Select your
+                  Hospital</label>
+                <select id="countries"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            
+                  <option>Koshi Hospital</option>
+                  <option>Nobel Hospital</option>
+                  <option>Birat Hospital </option>
+                  <option>SaptaKoshi Hospital</option>
+                </select>
+                <label for="countries" class="block mb-2 text-sm font-medium text-black  dark:text-white mt-2">
+                  Specilization</label>
+                <select id="countries"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option> physician</option>
+                  <option>Gastroenterologist</option>
+                  <option>Eye care</option>
+                  <option>Dermatologist </option>
+                  <option>Cardiologist</option>
+                </select>
+                <button type="button"
+                  class="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 my-4">Sumbit</button>
+            
+              </form>
+
+        <!-- banalce  -->
+              <section class="mt-8 py-8 px-4 border flex gap-8 justify-evenly">
+                <div class="flex flex-col items-center justify-center">
+                    <dt class="mb-2 text-3xl font-extrabold">3500</dt>
+                    <dd class="text-gray-500 dark:text-gray-400">Balance Used</dd>
+                </div>
+                <div class="flex flex-col items-center justify-center">
+                    <dt class="mb-2 text-3xl font-extrabold">6500</dt>
+                    <dd class="text-gray-500 dark:text-gray-400">Balance available</dd>
+                </div>
+                
+              </section>
+              </article>
+
+        </aside>
+    </main>
 
 
 
-{% block script %}
-  
-{% endblock script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+</body>
+</html>
