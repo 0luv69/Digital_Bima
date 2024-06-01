@@ -7,7 +7,6 @@ from django.utils.text import slugify
 
 class Appoinment(models.Model):
     user= models.ForeignKey(User, on_delete=models.CASCADE)
-    # opd= models.ForeignKey (Opd)
     Hospital_CHOICES= (
         ('H1', 'H1'),
         ('H2', 'H2'),
@@ -19,6 +18,14 @@ class Appoinment(models.Model):
 
     # medicine_token = models.ForeignKey(Medicine_token)
     appoinment_status= models.BooleanField(default=True)
+
+class Opd(models.Model):
+    appoinment = models.ForeignKey(Appoinment, on_delete=models.CASCADE)
+    token_num = models.IntegerField()
+    checkup_estimeted_time= models.DateTimeField()
+    medicine_estimeted_time= models.DateTimeField(blank=True, null=True)
+
+
 
 
 
