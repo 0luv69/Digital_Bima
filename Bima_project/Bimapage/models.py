@@ -12,12 +12,11 @@ class Appoinment(models.Model):
         ('H2', 'H2'),
     )
     Hospital = models.CharField(max_length=20, choices=Hospital_CHOICES, default='H1')
+    appoinment_status= models.BooleanField(default=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    # medicine_token = models.ForeignKey(Medicine_token)
-    appoinment_status= models.BooleanField(default=True)
 
 class Opd(models.Model):
     appoinment = models.ForeignKey(Appoinment, on_delete=models.CASCADE)
@@ -25,8 +24,34 @@ class Opd(models.Model):
     checkup_estimeted_time= models.DateTimeField()
     medicine_estimeted_time= models.DateTimeField(blank=True, null=True)
 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
+class Medicine(models.Model):
+    med_name=     models.CharField(max_length=100)
+    med_disc= models.TextField()
+    med_price = models.FloatField(default=0)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class CheckupResult(models.Model):
+    opd = models.ForeignKey(Opd, on_delete=models.CASCADE)
+    medicine = models.ManyToManyField(Medicine)
+    result_discription = models.TextField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class MedicineStore(models.Model):
+    checkupresult = models.ForeignKey(CheckupResult, on_delete=models.CASCADE)
+    total=  models.FloatField(default=0)
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 class Hospital(models.Model):
@@ -43,4 +68,8 @@ class Hospital(models.Model):
     hos_web= models.CharField(max_length=100)
 
     logo = models.ImageField(upload_to='hospital')
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
 
