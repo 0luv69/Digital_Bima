@@ -31,5 +31,9 @@ class Hospital(models.Model):
         ('private', 'private'),
     )
     hos_type= models.CharField(max_length=30, choices=Hos_type, default= 'gov')
+    hos_Ph= models.CharField(max_length=100)
+    hos_email= models.EmailField(max_length=254)
+    hos_web= models.CharField(max_length=100)
 
+    logo = models.ImageField(upload_to='hospital')
 
