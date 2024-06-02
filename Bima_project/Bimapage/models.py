@@ -7,12 +7,9 @@ from datetime import datetime
 class Patient(models.Model):
     user= models.ForeignKey(User, on_delete=models.CASCADE)
     user_pic = models.ImageField(upload_to='user_pic')
-    rastriyaparichai_patra_no = models.CharField(max_length=50, unique=True)
-    rastriyaparichai_issue_date = models.DateField()
     
-    registration_no = models.CharField(max_length=50, unique=True)
+    bima_no = models.CharField(max_length=50, unique=True)
     birth_date = models.DateField()
-    parent_phone_number = models.CharField(max_length=15)
     address = models.TextField()
     district = models.CharField(max_length=100)
     ward_no = models.IntegerField()
@@ -23,26 +20,13 @@ class Patient(models.Model):
         ('O', 'Other'),
     ]
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-
-    def _str_(self):
-        return f"{self.registration_no} - {self.national_id}"
     
     def __str__(self):
         return self.user.username
 
 
 
-class Appoinment(models.Model):
-    user= models.ForeignKey(User, on_delete=models.CASCADE)
-    Hospital_CHOICES= (
-        ('H1', 'H1'),
-        ('H2', 'H2'),
-    )
-    Hospital = models.CharField(max_length=20, choices=Hospital_CHOICES, default='H1')
-    appoinment_status= models.BooleanField(default=True)
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
 class Hospital(models.Model):
     registration_num = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -63,10 +47,19 @@ class Hospital(models.Model):
     def __str__(self):
         return self.hos_name
 
+class Appoinment(models.Model):
+    user= models.ForeignKey(User, on_delete=models.CASCADE)
+    Hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
+    specilization = models.CharField(max_length=200 )
+    appoinment_status= models.BooleanField(default=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
 class Opd(models.Model):
     appoinment = models.ForeignKey(Appoinment, on_delete=models.CASCADE)
     token_num = models.IntegerField()
-    checkup_estimeted_time= models.DateTimeField()
+    checkup_estimeted_time= models.DateTimeField(blank=True, null=True)
     medicine_estimeted_time= models.DateTimeField(blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now=True)
@@ -74,7 +67,7 @@ class Opd(models.Model):
 
 
 class Medicine(models.Model):
-    med_name=     models.CharField(max_length=100)
+    med_name= models.CharField(max_length=100)
     med_disc= models.TextField()
     med_price = models.FloatField(default=0)
 

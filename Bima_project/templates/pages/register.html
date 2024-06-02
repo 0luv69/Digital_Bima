@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock title %}
+
+
+{% block content %}
+<section class="my-10">
+  <div class="flex flex-col items-center justify-center px-6 py-7 mx-auto lg:py-0">
+    <div class="w-full bg-white rounded-lg shadow-md dark:border md:mt-0 sm:max-w-md xl:p-0">
+      <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+        <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl text-black">
+          Registration Form
+        </h1>
+        <form action="/signup/" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="space-y-4 md:space-y-2 grid grid-cols-2 gap-3">
+
+
+            <div>
+              <label for="Firstname" class="block mb-2 mt-2 text-sm font-medium text-gray-900 text-black">Full
+                name</label>
+              <input type="text" name="full_name" id="Firstname"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2"
+                placeholder="Enter your name" required="">
+            </div>
+            <div>
+              <label for="username" class="block mb-2  text-sm font-medium text-gray-900 text-black">Username</label>
+              <input type="text" name="username" id="username"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2"
+                placeholder="Enter your name" required="">
+            </div>
+            <div>
+              <label for="password" class="block mb-2 text-sm font-medium text-gray-900 text-black">Date of
+                Birth</label>
+              <input type="date" name="Date" id="password"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2"
+                required="">
+            </div>
+            <div>
+              <label for="Gender" class="block mb-2 text-sm font-medium text-gray-900 text-black">Gender</label>
+              <select id="countries" name="gender"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="other">other</option>
+              </select>
+            </div>
+            <div>
+              <label for="Address" class="block mb-2 text-sm font-medium text-gray-900 text-black">Full Address</label>
+              <input type="text" name="Address" id="Address"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2"
+                placeholder="Address" required="">
+            </div>
+            <div>
+              <label for="District" class="block mb-2 text-sm font-medium text-gray-900 text-black">District</label>
+              <input type="text" name="District" id="District"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2"
+                placeholder="District" required="">
+            </div>
+            <div>
+              <label for="Ward" class="block mb-2 text-sm font-medium text-gray-900 text-black">Ward No</label>
+              <input type="text" name="Ward" id="Ward"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2"
+                placeholder="02" required="">
+            </div>
+            <div>
+              <label for="Bima" class="block mb-2 text-sm font-medium text-gray-900 text-black">Bima Number</label>
+              <input type="Number" name="BimaNumber" id="BimaNumber"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2"
+                placeholder="02343-34345-56-345345" required="">
+            </div>
+            <div>
+              <label for="Bima" class="block mb-2 text-sm font-medium text-gray-900 text-black">Bima Issue
+                Date</label>
+              <input type="Number" name="BimaIssue" id="BimaIssue"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2"
+                placeholder="2079-02-09" required="">
+            </div>
+            <div>
+              <label for="email" class="block mb-2  text-sm font-medium text-gray-900 text-black">Email</label>
+              <input type="email" name="email" id="email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2"
+                placeholder="Enter your name" required="">
+            </div>
+
+          </div>
+          <div>
+            <label for="password" class="block mb-2  text-sm font-medium text-gray-900 text-black">Password</label>
+            <input type="password" name="password" id="password"
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2"
+              placeholder="Password Here" required="">
+          </div>
+          <div>
+            <label class="block my-4 text-sm font-medium text-black" for="file_input">Upload file</label>
+            <input name="pic" class="hidden" id="file_input" type="file" >
+            <label for="file_input" class="inline-block w-full text-sm border-blue-500 rounded-lg cursor-pointer py-2 px-4 border border-transparent">Choose file</label>
+          </div>
+          
+          <div>
+            <button type="submit"
+              class="w-full bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-white text-sm px-5 py-2.5 text-center border border-gray-300 my-4  ">Submit</button>
+          </div>
+          <p class="text-sm font-light text-gray-500 text-black">
+            Already have an account? <a href="/login/" class="font-medium text-primary-600 hover:underline text-black">Login
+              here</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock content %}
