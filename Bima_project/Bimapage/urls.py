@@ -5,7 +5,7 @@ urlpatterns = [
     path('', homepage, name="home"),
     path('appoinment/',appoinment, name='appoinment'),
     path('medicalstore/', med_login, name="med_login"),
-    path('add_med/', add_medicine, name="add_med"),
+    path('add-med/', add_medicine, name="add_med"),
 
 
     path('signup/', register, name="register"),

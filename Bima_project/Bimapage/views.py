@@ -140,13 +140,16 @@ def add_medicine(request):
         if request.method == 'POST':
             selected_medicines = request.POST.get('selectedMedicinesall').split(',')
             result_description = request.POST.get('description')
-            patient_name = request.POST.get('patient_name')
+            patients = request.POST.get('patient_name').split(',')
+            patient_name= patients[0]
+            token_num= patients[1]
 
             if patient_name:
                 today_date = date.today()
                 try:
                     # Retrieve the OPD record for today
                     opds = Opd.objects.get(appoinment__user__username=patient_name,
+                                           token_num=token_num,
                                            created_at__year=today_date.year, 
                                            created_at__month=today_date.month,
                                            created_at__day=today_date.day)

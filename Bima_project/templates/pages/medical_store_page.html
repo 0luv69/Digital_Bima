@@ -56,7 +56,7 @@
         <h1 class="text-3xl font-bold mb-6 text-center">Medical Store</h1>
         <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-md mx-auto">
             <h2 class="text-2xl font-semibold mb-4">Add Medicine</h2>
-            <form id="medicineForm" method="POST" action="/add_med/" class="space-y-4">
+            <form id="medicineForm" method="POST" action="/add-med/" class="space-y-4">
                 {% csrf_token %}
                 <div>
                     <label for="medicineName" class="block text-sm font-medium text-gray-700">Medicine Name</label>
@@ -77,7 +77,7 @@
                         <option value="" disabled selected>Select a Patient</option>
                         {% for each_appointment in todays_appointment  %}
                             {% for opd in each_appointment.opd_set.all %}
-                                <option value="{{ each_appointment.user }}">{{ each_appointment.user }} with token num: {{ opd.token_num }}</option>
+                                <option value="{{ each_appointment.user }}, {{ opd.token_num }} ">{{ each_appointment.user }} with token num: {{ opd.token_num }}</option>
                             {% endfor %}
                         {% endfor %}
                     </select>
