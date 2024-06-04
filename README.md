@@ -42,3 +42,25 @@
 ## Overall Benefits
 
 Digital Bima goes beyond appointment booking. It empowers patients in Nepal to actively manage their healthcare experience. By eliminating unnecessary queues, providing transparent wait times and cost breakdowns, offering secure access to medical records, and tracking healthcare expenses, the platform saves valuable time, promotes informed decision-making, and fosters a more efficient and user-centric healthcare system.
+
+
+## Problems 
+when One user book 2 appoinment and mediacal store owner adds to any one instance of same user we get error 
+
+```bash
+MultipleObjectsReturned at /add-med/
+get() returned more than one Opd -- it returned 2!
+
+Digital Bima\Bima_project\Bimapage\views.py, line 149, in add_medicine
+            result_description = request.POST.get('description')
+            patient_name = request.POST.get('patient_name')
+            if patient_name:
+                today_date = date.today()
+                try:
+                    # Retrieve the OPD record for today
+                    opds = Opd.objects.get(appoinment__user__username=patient_name,
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+                                           created_at__year=today_date.year, 
+                                           created_at__month=today_date.month,
+                                           created_at__day=today_date.day)```
+
