@@ -1,0 +1,174 @@
+{% load static tailwind_tags %}
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% tailwind_css %}
+</head>
+<body>
+    <div>
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                    <div id="sticky-banner-{{ forloop.counter }}" tabindex="-1" class="fixed top-0 start-0 z-50 flex justify-between w-full p-4 border-b border-gray-200 bg-green-400 dark:bg-gray-700 dark:border-gray-600">
+                {% elif message.tags == 'warning' %}
+                    <div id="sticky-banner-{{ forloop.counter }}" tabindex="-1" class="fixed top-0 start-0 z-50 flex justify-between w-full p-4 border-b border-gray-200 bg-red-400 dark:bg-gray-700 dark:border-gray-600">
+                {% else %}
+                    <div id="sticky-banner-{{ forloop.counter }}" tabindex="-1" class="fixed top-0 start-0 z-50 flex justify-between w-full p-4 border-b border-gray-200 bg-orange-400 dark:bg-gray-700 dark:border-gray-600 transition duration-1000 ease-in-out">
+                {% endif %}
+                    <div class="flex items-center mx-auto">
+                        <p class="flex items-center text-sm font-semibold text-gray-900 dark:text-gray-400 ">
+                            <span class="inline-flex p-1 me-3 bg-gray-200 rounded-full dark:bg-gray-600 w-6 h-6 items-center justify-center flex-shrink-0">
+                                <svg class="w-3 h-3 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 19">
+                                    <path d="M15 1.943v12.114a1 1 0 0 1-1.581.814L8 11V5l5.419-3.871A1 1 0 0 1 15 1.943ZM7 4H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2v5a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2V4ZM4 17v-5h1v5H4ZM16 5.183v5.634a2.984 2.984 0 0 0 0-5.634Z"/>
+                                </svg>
+                                <span class="sr-only">Light bulb</span>
+                            </span>
+                            <span>{{ message }}</span>
+                        </p>
+                    </div>
+                    <div class="flex items-center">
+                        <button data-dismiss-target="#sticky-banner-{{ forloop.counter }}" type="button" class="flex-shrink-0 inline-flex justify-center w-7 h-7 items-center text-gray-900 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 dark:hover:bg-gray-600 dark:hover:text-white">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                            <span class="sr-only">Close banner</span>
+                        </button>
+                    </div>
+                </div>
+                <script>
+                    // Remove the banner after 6 seconds
+                    setTimeout(function() {
+                        var banner = document.getElementById('sticky-banner-{{ forloop.counter }}');
+                        if (banner) {
+                            banner.remove();
+                        }
+                    }, 3000);
+                </script>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+
+
+    <div class="container mx-auto p-8">
+        <h1 class="text-3xl font-bold mb-6 text-center">Medical Store</h1>
+        <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-md mx-auto">
+            <h2 class="text-2xl font-semibold mb-4">Add Medicine</h2>
+            <form id="medicineForm" method="POST" action="/add_med/" class="space-y-4">
+                {% csrf_token %}
+                <div>
+                    <label for="medicineName" class="block text-sm font-medium text-gray-700">Medicine Name</label>
+                    <input type="text" id="medicineName" name="medicineName" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="Search for medicine">
+                    <ul id="medicineList" class="mt-2 bg-white border border-gray-300 rounded-md shadow-sm max-h-40 overflow-y-auto"></ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium mb-2">Selected Medicines</h3>
+                    <div id="selectedMedicineList" class="space-y-2 bg-gray-100 p-4 rounded-md border border-gray-300">
+
+                    </div>
+                    <!-- Hidden input fields for selected medicines -->
+                    <input type="" name="selectedMedicinesall" id="selectedMedicinesall">
+                </div>
+                <div>
+                    <label for="patient_name" class="block text-sm font-medium text-gray-700">Patient Name</label>
+                    <select id="patient_name" name="patient_name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
+                        <option value="" disabled selected>Select a Patient</option>
+                        {% for each_appointment in todays_appointment  %}
+                            {% for opd in each_appointment.opd_set.all %}
+                                <option value="{{ each_appointment.user }}">{{ each_appointment.user }} with token num: {{ opd.token_num }}</option>
+                            {% endfor %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="description" class="block text-sm font-medium text-gray-700">Result Description</label>
+                    <textarea id="description" name="description" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" rows="3" required></textarea>
+                </div>
+                <div class="text-right">
+                    <button type="submit" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700">Add Medicine</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+<script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+        const selectedMedicines = [];
+        const medicines = [];
+        {% for each_med in medicine %}
+        medicines.push('{{ each_med.med_name }}');
+        {% endfor %}
+
+        const medicineNameInput = document.getElementById('medicineName');
+        const medicineList = document.getElementById('medicineList');
+        const selectedMedicineList = document.getElementById('selectedMedicineList');
+        const medicineForm = document.getElementById('medicineForm');
+
+        medicineNameInput.addEventListener('input', query_search_box);
+        
+        function query_search_box() {
+            const searchQuery = medicineNameInput.value.toLowerCase();
+            const filteredMedicines = medicines.filter(med => med.toLowerCase().includes(searchQuery));
+
+            medicineList.innerHTML = '';
+            filteredMedicines.forEach(med => {
+                const li = document.createElement('li');
+                li.textContent = med;
+                li.classList.add('cursor-pointer', 'hover:bg-gray-200', 'p-2');
+                li.addEventListener('click', () => {
+                    if (!selectedMedicines.includes(med)) {
+                        selectedMedicines.push(med);
+                        updateSelectedMedicines();
+                    }
+                });
+                medicineList.appendChild(li);
+            });
+        }
+        query_search_box();
+
+        function updateSelectedMedicines() {
+            if (selectedMedicines.length === 0){
+                
+                selectedMedicineList.innerHTML= `<p class="bg-orange-200 rounded p-2 mb-2 ">.....No Medicine Selected Yet....</p>`
+            }
+            else{
+                selectedMedicineList.innerHTML = '';
+                selectedMedicines.forEach((med, index) => {
+                    const div = document.createElement('div');
+                    div.classList.add('flex', 'justify-between', 'items-center', 'bg-gray-200', 'rounded', 'p-2', 'mb-2');
+                    div.innerHTML = `<span>${med}</span> <button type="button" class="bg-red-500 text-white px-2 py-1 rounded" data-index="${index}">Remove</button>`;
+                    selectedMedicineList.appendChild(div);
+                });
+
+                document.querySelectorAll('#selectedMedicineList button').forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        const index = event.target.getAttribute('data-index');
+                        selectedMedicines.splice(index, 1);
+                        updateSelectedMedicines();
+                    });
+                });
+                
+            }
+        }
+        updateSelectedMedicines() 
+
+
+
+        medicineForm.addEventListener('submit', (event) => {
+            if (selectedMedicines.length === 0) {
+                alert('Please select at least one medicine.');
+                event.preventDefault();
+            }
+            else{
+                med_list = document.getElementById('selectedMedicinesall');
+                med_list.value= selectedMedicines;
+
+            }
+        });
+    });
+</script>
+</body>
+</html>

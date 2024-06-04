@@ -4,6 +4,10 @@ from Bimapage.views import *
 urlpatterns = [
     path('', homepage, name="home"),
     path('appoinment/',appoinment, name='appoinment'),
+    path('medicalstore/', med_login, name="med_login"),
+    path('add_med/', add_medicine, name="add_med"),
+
+
     path('signup/', register, name="register"),
     path('login/', login_page, name="login"),
     path('logout/', logout_page, name="logout"),

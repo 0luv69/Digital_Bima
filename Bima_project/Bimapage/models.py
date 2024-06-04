@@ -24,10 +24,6 @@ class Patient(models.Model):
     def __str__(self):
         return self.user.username
 
-
-
-
-
 class Hospital(models.Model):
     registration_num = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     hos_name = models.CharField(max_length=100)
@@ -74,9 +70,12 @@ class Medicine(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self) -> str:
+        return self.med_name
+
 
 class CheckupResult(models.Model):
-    opd = models.ForeignKey(Opd, on_delete=models.CASCADE)
+    opd = models.OneToOneField(Opd, on_delete=models.CASCADE, related_name='checkupresults')
     medicine = models.ManyToManyField(Medicine)
     result_discription = models.TextField()
 

@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from .models import *
 from django.utils import timezone
 from datetime import timedelta
+from datetime import date
 
 def check_new_day():
     lst_appoinment=Appoinment.objects.last()
@@ -35,30 +36,37 @@ def homepage(request):
     context = {'hospitals':hospitals, 'opd':opd, 'latest_Opd':latest_Opd}
     return render(request, 'pages/index.html',context)
 
-@login_required(login_url="login")
 def appoinment(request):
-    if request.method == 'POST':
-        hospital_name = request.POST.get('hospital')
-        doctor_type = request.POST.get('doctor_type')
-        hospital = get_object_or_404(Hospital, hos_name=hospital_name)
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            hospital_name = request.POST.get('hospital')
+            doctor_type = request.POST.get('doctor_type')
+            hospital = get_object_or_404(Hospital, hos_name=hospital_name)
 
-        if check_new_day():
-            new_token = 1
-        else:
-            last_token_num= Opd.objects.last().token_num
-            new_token = last_token_num +1
-        checkup_estimeted_time = timezone.now() + timedelta(minutes=15)
-        medicine_estimeted_time= checkup_estimeted_time +  timedelta(minutes=20)
-        
+            if check_new_day():
+                new_token = 1
+            else:
+                last_token_num= Opd.objects.last().token_num
+                new_token = last_token_num +1
+            checkup_estimeted_time = timezone.now() + timedelta(minutes=15)
+            medicine_estimeted_time= checkup_estimeted_time +  timedelta(minutes=20)
+            
 
-        appoinment= Appoinment.objects.create(user=request.user, Hospital=hospital, specilization=doctor_type)
-        opd = Opd.objects.create(appoinment=appoinment, token_num=new_token,
-                                 checkup_estimeted_time=  checkup_estimeted_time,
-                                  medicine_estimeted_time= medicine_estimeted_time )
+            appoinment= Appoinment.objects.create(user=request.user, Hospital=hospital, specilization=doctor_type)
+            opd = Opd.objects.create(appoinment=appoinment, token_num=new_token,
+                                    checkup_estimeted_time=  checkup_estimeted_time,
+                                    medicine_estimeted_time= medicine_estimeted_time )
 
-        messages.success(request, 'Succefully added')
-    return redirect(homepage)
-    
+            messages.success(request, 'Succefully added')
+        return redirect(homepage)
+    else:
+        messages.warning(request, "First Verify Then Book Appoinment, signup in one step .")
+        return redirect('login')
+
+
+
+
+
 def login_page(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -121,3 +129,68 @@ def logout_page(request):
     logout(request)      
     messages.success(request, "Loged out ")
     return redirect('login')
+
+
+medical_user_auth = False
+
+
+def add_medicine(request):
+    global medical_user_auth
+    if medical_user_auth:
+        if request.method == 'POST':
+            selected_medicines = request.POST.get('selectedMedicinesall').split(',')
+            result_description = request.POST.get('description')
+            patient_name = request.POST.get('patient_name')
+
+            if patient_name:
+                today_date = date.today()
+                try:
+                    # Retrieve the OPD record for today
+                    opds = Opd.objects.get(appoinment__user__username=patient_name,
+                                           created_at__year=today_date.year, 
+                                           created_at__month=today_date.month,
+                                           created_at__day=today_date.day)
+
+                    # Create a CheckupResult entry
+                    checkupresult = CheckupResult.objects.create(opd=opds, result_discription=result_description)
+
+                    # Add selected medicines to the CheckupResult
+                    for each_med in selected_medicines:
+                        print(each_med)
+                        medicine_obj = Medicine.objects.get(med_name=each_med)
+                        checkupresult.medicine.add(medicine_obj)
+
+                    messages.success(request, "Added Results.")
+                except Opd.DoesNotExist:
+                    messages.error(request, "OPD record for the patient today does not exist.")
+            else:
+                messages.error(request, "Patient name is required.")
+                medicine = Medicine.objects.all()
+            return redirect(add_medicine)
+        else:
+            medicine= Medicine.objects.all()
+            today_date = date.today()
+            todays_appointment = Appoinment.objects.filter(created_at__year=today_date.year, 
+                                                        created_at__month=today_date.month,
+                                                        created_at__day=today_date.day)
+
+            return render(request, 'pages/medical_store_page.html', {'medicine': medicine, 'todays_appointment':todays_appointment, })
+    else:
+        messages.error(request, "User not authorized.")
+        return redirect(med_login)
+
+
+def med_login(request):
+    global medical_user_auth
+    medical_user_auth= False
+    if request.method == 'POST':
+        password= request.POST.get('password')
+        username= request.POST.get('username')
+
+        if username == 'admin':
+            if password == '1234':
+                medical_user_auth=True
+                return redirect(add_medicine)
+
+    return render(request, 'pages/store_auth.html')
+
