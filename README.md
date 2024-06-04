@@ -1,15 +1,15 @@
-So this is basically an Web application devloped in django, using tailwind css as front end
-Digital Bima, 
+Digital Bima: Streamlining Healthcare Appointments in Nepal
+Digital Bima is a web application built with Django (backend framework) and Tailwind CSS (front-end framework) that aims to address common inefficiencies within the Nepalese hospital system, specifically focusing on streamlining the Outpatient Department (OPD) process.
 
-an application which deals to help out basic problem ho health insureance of Nepal hospital system,
+Problems Addressed:
 
-Probelms
-3 time long line needed to lined one for opd paper, sencond for checkup at last for medicine
-no online appoinment system
+Lengthy Wait Times: Patients often face long lines for three separate stages: OPD paper processing, doctor checkups, and finally, medication collection.
+Lack of Online Appointments: The current system lacks an online appointment booking mechanism, leading to in-person queues and wasted time.
+Solutions Offered:
 
-solution
-made page where as user logged in after signup they will be welcomed to home page and in one click of book appoinment after selcting hosptial and doctor speliation on like physican, physochology, dentist. the appoinment will be booked
+Simplified Appointment Booking: Users can register and sign in to the platform. Once logged in, they can book appointments in a single click by selecting their preferred hospital, doctor's specialization (e.g., physician, psychologist, dentist), and desired date/time.
+Appointment Management: The platform displays a user's current appointments, providing details such as the hospital, doctor's specialization, assigned token number, estimated wait times for checkups and medication collection. This allows users to plan their visits effectively.
+Appointment History: The "Recent Appointments" section provides a record of past appointments, including the date, time, total cost of purchased medications (when applicable), and a breakdown of prescribed medications, doctor's reports, and details of the visited hospital and doctor's specialization (accessible via a dropdown menu).
+Overall Benefits:
 
-and the current booked appoinment will be shown with hospital, speclication, token number, estimed time to be in checkup and another estimited time to take medicine so people time will be saved
-
-in recent appoinment booked section we can see the date & time of booked appoinment and total price being saved from buying mediacine, when clicked deop down we will see all mediacine we brought, doctor report results, and checked hospital with cehcked specilaization
+Digital Bima empowers patients in Nepal to manage their healthcare appointments efficiently. By eliminating unnecessary queues and providing clear appointment information, the platform saves valuable time and enhances the overall healthcare experience.
