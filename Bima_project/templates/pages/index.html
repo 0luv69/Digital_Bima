@@ -105,6 +105,10 @@
             <div class="p-4 mt-8 border rounded-lg md:p-8 dark:bg-gray-800">    
                 <h2 class="mb-5 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Recent Appointment</h2>     
                  {% if opd %}
+                 <script>
+                                        all_total= 0
+
+                 </script>
                 <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
                     {% for eachopd in opd %}
                     <h2 id="accordion-flush-heading-1">
@@ -116,17 +120,17 @@
                             <div class="flex gap-8 items-center">
                                 <div class="inline-flex items-center text-base text-gray-900 dark:text-white">
 
-                                    Rs.&nbsp; <span id="price_tt">0</span>
+                                    Rs.&nbsp; <span id="p_{{eachopd.token_num}}">0</span>
                                     <script>
-                                        price_tt= document.getElementById('price_tt')
-                                        let tp= 0
+                                        let tp_{{eachopd.token_num}}= 0
                                         {% for each_med in  eachopd.checkupresults.medicine.all %}
-                                        tp=tp + {{each_med.med_price}}
-                                        console.log(tp)
+                                        tp_{{eachopd.token_num}}=tp_{{eachopd.token_num}} + {{each_med.med_price}}
                                         {% endfor %}
                                         
-                                        price_tt.textContent= tp
-
+                                        price_tt= document.getElementById('p_{{eachopd.token_num}}')
+                                        price_tt.textContent= tp_{{eachopd.token_num}}
+                                        all_total= all_total + tp_{{eachopd.token_num}}
+                                        console.log(all_total)
 
                                     </script>
                                 </div>
@@ -245,8 +249,8 @@
 </main>
 
 <script>
-   document.getElementById('balanceused').textContent = tp;
-   document.getElementById('balanceavailable').textContent =10000- tp;
+   document.getElementById('balanceused').textContent = all_total;
+   document.getElementById('balanceavailable').textContent =10000- all_total;
 
 </script>
 {% endblock content %}
