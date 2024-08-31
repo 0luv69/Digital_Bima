@@ -2,7 +2,7 @@
 
 
 ## Introduction to Beema
-An application, build to digitilize the Government Health Beema of Nepal. Here we let You not to  worries on regular based 
+An application, build to digitilize the Government Health Beema of Nepal. Here we let You not to  worries on regular Line and Headache Based beema.
 
 
 ## Problems Addressed
