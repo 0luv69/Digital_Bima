@@ -1,5 +1,10 @@
 # Digital Bima: Your One-Stop Shop for Streamlined Healthcare in Nepal
 
+
+## Introduction to Beema
+An application, build to digitilize the Government Health Beema of Nepal
+
+
 ## Problems Addressed
 
 1. **Lengthy Wait Times and Inefficiency:**
