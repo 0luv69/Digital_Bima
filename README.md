@@ -16,7 +16,7 @@ An application, build to digitilize the Government Health Beema of Nepal. Here w
 3. **Security Concerns:**
    Traditional paper-based systems are vulnerable to loss or damage, potentially jeopardizing sensitive medical information.
 
-## Solutions Offered
+## Solutions we Offers
 
 1. **Simplified Appointment Booking and Management:**
    Users can register and sign in securely to book appointments in a single click. The platform facilitates the selection of preferred hospitals, doctor specializations, and desired dates/times.
