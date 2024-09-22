@@ -26,7 +26,7 @@ PRODUCTION_ENV = str(os.getenv('PRODUCTION_ENV')).lower() == 'true'
 USE_SQLITE = str(os.getenv('USE_SQLITE')).lower() == 'true'
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.vercel.app']
 
 
 # Application definition
