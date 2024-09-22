@@ -6,7 +6,7 @@ from datetime import datetime
 
 class Patient(models.Model):
     user= models.ForeignKey(User, on_delete=models.CASCADE)
-    user_pic = models.ImageField(upload_to='user_pic')
+    user_pic = models.ImageField(upload_to='user_pic', blank=True, null=True)
     
     bima_no = models.CharField(max_length=50, unique=True)
     birth_date = models.DateField()
