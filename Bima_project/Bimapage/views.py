@@ -115,7 +115,7 @@ def register(request):
         user_obj.save()
 
         #patient
-        patient_obj= Patient.objects.create(user =user_obj,user_pic= pic, bima_no=BimaNumber,
+        patient_obj= Patient.objects.create(user =user_obj, bima_no=BimaNumber,
                                             birth_date= date_of_birth,address=Address,district= District,
                                                gender=gender, ward_no= Ward )
 
@@ -190,8 +190,8 @@ def med_login(request):
         password= request.POST.get('password')
         username= request.POST.get('username')
 
-        if username == 'admin':
-            if password == '1234':
+        if username == 'mediacl_admin':
+            if password == 'mediacl_admin':
                 medical_user_auth=True
                 return redirect(add_medicine)
 
