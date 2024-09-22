@@ -45,7 +45,6 @@ INSTALLED_APPS = [
 
     'whitenoise.runserver_nostatic',
 
-
     'Bimapage',
 ]
 
