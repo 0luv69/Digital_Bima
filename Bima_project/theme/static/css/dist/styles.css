@@ -1459,9 +1459,9 @@ select {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-.text-green-300 {
+.text-green-900 {
   --tw-text-opacity: 1;
-  color: rgb(134 239 172 / var(--tw-text-opacity));
+  color: rgb(20 83 45 / var(--tw-text-opacity));
 }
 
 .text-red-500 {
