@@ -6,11 +6,11 @@
 
 
 {% block content %}
-<main class="flex gap-12 px-28 py-8">
+<main class="flex flex-col-reverse lg:flex-row gap-8 px-4 lg:px-28 py-8">
     <!-- left  -->
-    <section class="w-3/5">
+    <section class="w-full lg:w-3/5">
         <div class="p-4 bg-blue-100 rounded-lg md:p-8 dark:bg-gray-800">
-            <h2 class="mb-5 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Protect Your Health with Rastriya Beema: Comprehensive Coverage</h2>
+            <h2 class="mb-5 text-2xl xl:text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Protect Your Health with Rastriya Beema: Comprehensive Coverage</h2>
             <p class="mb-3 text-gray-500 dark:text-gray-400">Comprehensive health insurance plans designed to safeguard your well-being. Our policies cover a wide range of medical services, ensuring you and your family have access to quality healthcare when you need it most. Trust us to provide the protection and peace of mind you deserve.</p>
             <a href="#" class="inline-flex items-center font-medium text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-700">
                 Learn more
@@ -20,7 +20,7 @@
             </a>
         </div>
         <div class="p-4 mt-8 border rounded-lg md:p-8 dark:bg-gray-800">
-            <h2 class="mb-5 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Current Appointment</h2>
+            <h2 class="mb-5 text-2xl xl:text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Current Appointment</h2>
             {% if latest_Opd %}
                 <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
                     <li class="py-3 sm:py-4">
@@ -104,7 +104,7 @@
         <!-- recent appointment  -->
             <div class="p-4 mt-8 border rounded-lg md:p-8 dark:bg-gray-800">    
                
-                <h2 class="mb-5 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Recent Appointment</h2>     
+                <h2 class="mb-5 text-2xl xl:text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Recent Appointment</h2>     
                  {% if opd %}
                  <script>
                                         all_total= 0
@@ -173,12 +173,15 @@
                         </div>
                     </div>
                     
-
-                     <p class="text-green-900 p-3">note: if needed to go for medical page go here and login as password is mediacl_admin and id is <span class="bg-slate-400 p-1 rounded">mediacl_admin</span>
-                     </p> 
-                     <a href="https://digitalbima.vercel.app/medicalstore/" class="p-2 m-3 bg-blue-200 rounded-sm text-black"> ...Mediacl page..</a>
+            
                     {% endfor %}
-                   
+                    <div>
+                        <p class="text-green-900 p-3">
+                            note: if needed to go for medical page go here and login as password is mediacl_admin and id is 
+                            <span class="bg-slate-400 p-1 rounded">mediacl_admin</span>
+                        </p> 
+                        <a href="https://digitalbima.vercel.app/medicalstore/" class="p-2 m-7 bg-blue-200 rounded-sm text-black"> ...Mediacl page..</a>
+                    </div>
                 </div>
                 {% else %}
                 <p class=" font-medium text-gray-900 truncate dark:text-white">
@@ -189,15 +192,15 @@
     </section>
 
 <!-- right -->
-    <aside class="w-2/5 px-8">
+    <section class="w-full lg:w-2/5 lg:px-8">
         {% if not request.user.is_authenticated %}
         <section class="mb-8 py-8 px-4 border flex justify-center gap-8">
             <div class="max-w-md">
-                <h1 class="font-bold text-3xl mb-4 text-center">Welcome to Our Platform</h1>
+                <h1 class="font-bold text-2xl xl:text-3xl mb-4 text-center">Welcome to Our Platform</h1>
                 <p class="text-gray-600 dark:text-gray-400 text-lg mb-6 text-center">Please sign up or log in to access our services.</p>
                 <div class="flex justify-center">
-                    <a href="/login/" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-md mr-4 transition duration-300">Log In</a>
-                    <a href="/signup/" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-md transition duration-300">Sign Up</a>
+                    <a href="/login/" class="bg-blue-500 text-nowrap hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-md mr-4 transition duration-300">Log In</a>
+                    <a href="/signup/" class="bg-blue-500 text-nowrap hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-md transition duration-300">Sign Up</a>
                 </div>
             </div>
         </section>
@@ -250,7 +253,7 @@
         {% endif %}
             
         </article>
-    </aside>
+    </section>
 </main>
 
 <script>
