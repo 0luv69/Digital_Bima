@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Digital Bima Documentation</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="{% static 'favicon.jpg' %}" type="image/x-icon">
+
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Digital Bima</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="{% url 'home' %}" class="hover:underline">Home</a></li>
+                    <li><a href="{% url 'documentation' %}" class="hover:underline">Documentation</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <section>
+            <h2 class="text-3xl font-bold mb-4">Digital Bima: Your One-Stop Shop for Streamlined Healthcare in Nepal</h2>
+            <p class="text-lg mb-6">Digital Bima is an application designed to digitize the Government Health Bima of Nepal, allowing users to bypass hospital queues and streamline their healthcare experience.</p>
+        </section>
+
+        <!-- Introduction -->
+        <section>
+            <h3 class="text-2xl font-semibold mb-4"><i class="fas fa-info-circle"></i> Introduction to Bima</h3>
+            <p class="mb-6">An application built to digitize the Government Health Bima of Nepal, where you no longer have to worry about long hospital queues for health checkups.</p>
+        </section>
+
+        <!-- Problems Addressed -->
+        <section>
+            <h3 class="text-2xl font-semibold mb-4"><i class="fas fa-exclamation-triangle"></i> Problems Addressed</h3>
+            <ul class="list-disc ml-6 space-y-2 mb-6">
+                <li><strong>Lengthy Wait Times and Inefficiency:</strong> Long queues for OPD registration, doctor checkups, and medication collection waste valuable time.</li>
+                <li><strong>Lack of Transparency:</strong> Unclear wait times and healthcare costs create confusion for patients.</li>
+                <li><strong>Security Concerns:</strong> Traditional paper systems risk loss or damage to sensitive medical records.</li>
+            </ul>
+        </section>
+
+        <!-- Solutions Offered -->
+        <section>
+            <h3 class="text-2xl font-semibold mb-4"><i class="fas fa-lightbulb"></i> Solutions We Offer</h3>
+            <ul class="list-disc ml-6 space-y-2 mb-6">
+                <li><strong>Simplified Appointment Booking:</strong> Users can easily book appointments with just a few clicks.</li>
+                <li><strong>Real-Time Updates:</strong> Get estimated wait times and cost breakdowns for transparency.</li>
+                <li><strong>Secure Storage of Health Records:</strong> Keep medical records safe and accessible anytime, anywhere.</li>
+                <li><strong>Expense Tracking:</strong> Track healthcare costs and insurance usage to make informed decisions.</li>
+            </ul>
+        </section>
+
+        <!-- How It Works -->
+        <section>
+            <h3 class="text-2xl font-semibold mb-4"><i class="fas fa-cogs"></i> How it Works</h3>
+            <ol class="list-decimal ml-6 space-y-2 mb-6">
+                <li><strong>Sign Up or Log In:</strong> Create an account or log in to manage your healthcare experience.</li>
+                <li><strong>Book Your Appointment:</strong> Choose hospitals and doctors based on your preferences.</li>
+                <li><strong>Visit the Hospital:</strong> Skip the registration line and use your appointment confirmation.</li>
+                <li><strong>Track Your Expenses:</strong> View detailed insights on your healthcare spending.</li>
+            </ol>
+        </section>
+
+        <!-- Benefits -->
+        <section>
+            <h3 class="text-2xl font-semibold mb-4"><i class="fas fa-gem"></i> Overall Benefits</h3>
+            <p class="mb-6">Digital Bima goes beyond appointment booking by offering transparency, secure record storage, and healthcare expense tracking. It saves time and promotes better decision-making for patients in Nepal.</p>
+        </section>
+
+        <!-- Technology Used -->
+        <section>
+            <h3 class="text-2xl font-semibold mb-4"><i class="fas fa-tools"></i> Technology Used</h3>
+            <ul class="list-disc ml-6 space-y-2 mb-6">
+                <li><strong>Django</strong></li>
+                <li><strong>Tailwind</strong></li>
+                <li><strong>Whitenoise</strong></li>
+                <li><strong>dotenv</strong></li>
+                <li><strong>Browser-reload</strong></li>
+                <li><strong>PostgreSQL (Production) & SQLite (Development)</strong></li>
+            </ul>
+        </section>
+
+        <!-- Problems -->
+        <section>
+            <h3 class="text-2xl font-semibold mb-4"><i class="fas fa-bug"></i> Problems</h3>
+            <ul class="list-disc ml-6 space-y-2">
+                <li>Not fully responsive.</li>
+                <li>Not production-ready (created for rapid development).</li>
+                <li>Not all features fully implemented.</li>
+                <li>Long sign-in process.</li>
+                <li>No validation in sign-in form.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 Digital Bima. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

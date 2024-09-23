@@ -22,6 +22,9 @@ def check_new_day():
             return 0
     return 1
 
+def documentation(request):
+    return render(request, 'documentation.html')
+
 def homepage(request):
     hospitals = Hospital.objects.all()
     opd, latest_Opd=None,None
