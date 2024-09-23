@@ -48,6 +48,13 @@ An application, build to digitilize the Government Health Beema of Nepal. Here w
 
 Digital Bima goes beyond appointment booking. It empowers patients in Nepal to actively manage their healthcare experience. By eliminating unnecessary queues, providing transparent wait times and cost breakdowns, offering secure access to medical records, and tracking healthcare expenses, the platform saves valuable time, promotes informed decision-making, and fosters a more efficient and user-centric healthcare system.
 
+## Technology used
+1) Django
+2) Tailwind
+3) whitenoise
+4) dotenv
+5) browser-reload
+6) For production Postgresql & For devlopemt used SQlite 
 
 ## Problems 
 1) Not responsive
