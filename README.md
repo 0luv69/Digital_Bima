@@ -50,4 +50,9 @@ Digital Bima goes beyond appointment booking. It empowers patients in Nepal to a
 
 
 ## Problems 
-????
+1) Not responsive
+2) Not for production, just created for rapid project round
+3) Not Fullfilled all the possible idea as marked
+4) long signin
+5) No validation in sign in
+   
